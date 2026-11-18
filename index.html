@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAPHY QUIZ 🧠🔥 | Play Quiz, Win Airtime - Homabay</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f0f0f;color:white;padding-bottom:80px}
+header{background:linear-gradient(135deg,#6c5ce7,#a29bfe);color:white;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20}
+header b{font-size:18px}
+header button{background:white;color:#6c5ce7;border:none;padding:8px 14px;border-radius:20px;font-weight:bold;cursor:pointer}
+.hero{padding:20px 16px;text-align:center}
+.hero h1{font-size:30px;line-height:1.1}
+.hero h1 span{color:#a29bfe}
+.hero p{color:#aaa;font-size:13px;margin:8px 0}
+.stats{display:flex;gap:10px;padding:0 16px}
+.stat{flex:1;background:#1e1e1e;border:1px solid #333;border-radius:14px;padding:12px;text-align:center}
+.stat b{font-size:18px;color:#a29bfe;display:block}
+.stat span{font-size:11px;color:#888}
+.quiz-card{background:#1e1e1e;border:1px solid #333;border-radius:18px;padding:16px;margin:14px 16px;cursor:pointer}
+.quiz-card:active{transform:scale(0.99)}
+.quiz-card .top{display:flex;gap:12px;align-items:center}
+.quiz-card .icon{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+.quiz-card b{font-size:15px;display:block}
+.quiz-card p{font-size:12px;color:#888;margin:3px 0}
+.quiz-card button{background:#6c5ce7;color:white;border:none;padding:9px 16px;border-radius:20px;font-weight:bold;cursor:pointer;margin-top:8px}
+.card{background:#1e1e1e;border-radius:18px;padding:16px;margin:0 16px 12px;border:1px solid #333}
+.card h3{margin-bottom:8px}
+.card p{font-size:13px;color:#aaa;line-height:1.6}
+.option{background:#222;border:1px solid #333;border-radius:12px;padding:13px;margin:8px 0;cursor:pointer;font-size:14px}
+.option:hover{border-color:#6c5ce7}
+.option.correct{background:#00a651;border-color:#00a651;color:white}
+.option.wrong{background:#e50914;border-color:#e50914;color:white}
+.bottom-nav{position:fixed;bottom:0;left:0;width:100%;background:#111;border-top:1px solid #333;padding:10px;display:flex;justify-content:space-around;font-size:11px;z-index:30}
+.bottom-nav div{text-align:center;cursor:pointer;color:#888}
+.bottom-nav div.active{color:#a29bfe;font-weight:bold}
+.bottom-nav div span{display:block;font-size:22px}
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:99;justify-content:center;align-items:flex-end}
+.modalBox{background:#1e1e1e;width:100%;max-width:500px;border-radius:20px 20px 0 0;padding:20px;max-height:85vh;overflow-y:auto}
+.modalBox button{padding:11px 16px;border-radius:10px;border:none;font-weight:bold;cursor:pointer;margin:5px}
+</style>
+</head>
+<body>
+
+<header><b>🧠 TAPHY QUIZ</b><button onclick="showToast('🏆 You: 850 Points! Rank #5')">🏆 850 Pts</button></header>
+
+<div class="hero">
+<h1>Play Quiz<br><span>Win Airtime! 🧠🔥</span></h1>
+<p>Answer Questions, Win Airtime! • Free to Play!<br>🟢 1,000+ Players • Top Prize Ksh 500 Airtime!</p>
+</div>
+
+<div class="stats">
+<div class="stat"><b>850</b><span>Your Points</span></div>
+<div class="stat"><b>#5</b><span>Your Rank</span></div>
+<div class="stat"><b>🔥 7</b><span>Win Streak</span></div>
+<div class="stat"><b>💰 200</b><span>Airtime Won</span></div>
+</div>
+
+<div class="quiz-card" onclick="startQuiz('General Knowledge','🌍')">
+<div class="top"><div class="icon" style="background:#6c5ce7">🌍</div><div style="flex:1"><b>General Knowledge</b><p>10 Questions • Easy • Win 50 Points</p></div><b style="color:#a29bfe">▶️</b></div>
+<button>Play Now →</button>
+</div>
+
+<div class="quiz-card" onclick="startQuiz('Football Quiz','⚽')">
+<div class="top"><div class="icon" style="background:#00a651">⚽</div><div style="flex:1"><b>Football Quiz</b><p>10 Questions • Football Fans!</p></div><b style="color:#a29bfe">▶️</b></div>
+<button>Play Now →</button>
+</div>
+
+<div class="quiz-card" onclick="startQuiz('Kenya Quiz','🇰🇪')">
+<div class="top"><div class="icon" style="background:#ff0055">🇰🇪</div><div style="flex:1"><b>Kenya Quiz</b><p>10 Questions • Kenya History!</p></div><b style="color:#a29bfe">▶️</b></div>
+<button>Play Now →</button>
+</div>
+
+<div class="quiz-card" onclick="startQuiz('Bible Quiz','⛪')">
+<div class="top"><div class="icon" style="background:#ffcc00">⛪</div><div style="flex:1"><b>Bible Quiz</b><p>10 Questions • PEFA Church!</p></div><b style="color:#a29bfe">▶️</b></div>
+<button>Play Now →</button>
+</div>
+
+<div class="card" style="background:linear-gradient(135deg,#6c5ce7,#a29bfe);color:white;border:none">
+<h3>🏆 LEADERBOARD - Top 5!</h3>
+<p style="color:#fff">🥇 <b>Favour</b> - 1,200 Points<br>🥈 <b>Ryan</b> - 1,050 Points<br>🥉 <b>Wesley</b> - 980 Points<br>4. <b>Pastor Jack</b> - 900 Points<br>5. <b>Taphy Samson</b> - 850 Points - YOU!</p>
+</div>
+
+<div class="card">
+<h3>🎁 Prizes - Win Airtime!</h3>
+<p>🥇 <b>#1 - Ksh 500 Airtime</b><br>🥈 <b>#2 - Ksh 300 Airtime</b><br>🥉 <b>#3 - Ksh 100 Airtime</b><br>🏅 <b>Top 10 - Ksh 50 Airtime</b><br><br>Quiz mpya kila siku 8AM! Cheza kila siku!</p>
+</div>
+
+<div style="text-align:center;color:#888;font-size:12px;padding:10px">Taphy Quiz • Homabay • Made by Taphy Samson 🇰🇪<br>Play • Learn • Win!</div>
+
+<div class="bottom-nav">
+<div class="active"><span>🏠</span>Home</div>
+<div onclick="startQuiz('General Knowledge','🌍')"><span>🧠</span>Play</div>
+<div onclick="showToast('🏆 You: #5 - 850 Pts!')"><span>🏆</span>Leaderboard</div>
+<div onclick="showToast('🎁 Prizes: Top 10 win airtime!')"><span>🎁</span>Prizes</div>
+<div onclick="showToast('👤 Taphy Samson - 850 Pts')"><span>👤</span>Profile</div>
+</div>
+
+<div class="modal" id="modal"><div class="modalBox"><div id="modalContent"></div><button style="background:white;color:#111;width:100%" onclick="closeModal()">Close ✕</button></div></div>
+<div id="toast" style="position:fixed;top:70px;left:50%;transform:translateX(-50%);background:#6c5ce7;color:white;padding:10px 18px;border-radius:20px;font-weight:bold;font-size:13px;z-index:100;display:none"></div>
+
+<script>
+let questions=[
+{q:'Homabay iko karibu na ziwa gani?', opts:['Lake Victoria','Lake Nakuru','Lake Naivasha','Lake Baringo'], ans:0},
+{q:'Capital ya Kenya ni?', opts:['Kisumu','Mombasa','Nairobi','Homabay'], ans:2},
+{q:'Homabay Stars ni timu ya mchezo gani?', opts:['Basketball','Football','Tennis','Rugby'], ans:1},
+{q:'PEFA inasimama kwa nini?', opts:['Pentecostal Evangelistic Fellowship of Africa','People For Africa','Peace For All','Pentecostal Fellowship'], ans:0},
+{q:'1 + 1 = ?', opts:['1','2','3','4'], ans:1},
+];
+let currentQ=0, score=0;
+function showToast(m){ let t=document.getElementById('toast'); t.innerText=m; t.style.display='block'; setTimeout(()=>t.style.display='none',2500); }
+function startQuiz(title,emoji){
+  currentQ=0; score=0;
+  showQuestion(title,emoji);
+  document.getElementById('modal').style.display='flex';
+}
+function showQuestion(title,emoji){
+  if(currentQ>=questions.length){
+    document.getElementById('modalContent').innerHTML='<div style="text-align:center"><div style="font-size:60px">🎉</div><h2>Quiz Done!</h2><p style="color:#aaa;margin:10px 0;line-height:1.6">Score yako: <b style="color:#a29bfe;font-size:24px">'+score+'/'+questions.length+'</b><br>Points won: <b>'+(score*10)+'</b><br><br>'+(score>=4?'🏆 Hongera! Umefanya vizuri!':'💪 Jaribu tena, unaweza!')+'</p><button style="background:#6c5ce7;color:white;width:100%;padding:13px" onclick="closeModal();showToast(\'🎉 Points added! Total: '+(850+score*10)+'\')">Claim Points →</button></div>';
+    return;
+  }
+  let q=questions[currentQ];
+  let opts=q.opts.map((o,i)=>'<div class="option" onclick="answerQ(this,'+i+','+(q.ans)+',\''+title+'\',\''+emoji+'\')">'+['A','B','C','D'][i]+'. '+o+'</div>').join('');
+  document.getElementById('modalContent').innerHTML='<h2>'+emoji+' '+title+'</h2><p style="color:#888;margin:8px 0">Question '+(currentQ+1)+'/'+questions.length+' • Score: '+score+'</p><div style="background:#111;border-radius:12px;padding:16px;margin:10px 0"><b style="font-size:16px">'+q.q+'</b></div>'+opts+'<p style="font-size:11px;color:#888;text-align:center">Chagua jibu sahihi!</p>';
+}
+function answerQ(el, chosen, correct, title, emoji){
+  let opts=document.querySelectorAll('.option');
+  opts.forEach(o=>o.onclick=null);
+  if(chosen==correct){ el.classList.add('correct'); score++; showToast('✅ Sahihi! +10 Points!'); }
+  else { el.classList.add('wrong'); opts[correct].classList.add('correct'); showToast('❌ Si sahihi! Jibu ni: '+opts[correct].innerText); }
+  setTimeout(()=>{ currentQ++; showQuestion(title,emoji); },1500);
+}
+function closeModal(){ document.getElementById('modal').style.display='none'; }
+</script>
+</body>
+</html>
